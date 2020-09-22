@@ -5,25 +5,45 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
+/** The type Individual record. */
 class IndividualRecord extends Record {
-    private String firstName, surname, gender;
-    private LocalDate birthDate;
+  /** The First name. */
+  private String firstName,
+      /** The Surname. */
+      surname,
+      /** The Gender. */
+      gender;
 
-    IndividualRecord() {
+  /** The Birth date. */
+  private LocalDate birthDate;
+
+  /** Instantiates a new Individual record. */
+  IndividualRecord() {
         super();
     }
 
-    public void setSurname(String surname) {
+  /**
+   * Sets surname.
+   *
+   * @param surname the surname
+   */
+  public void setSurname(String surname) {
         updateEditTime();
         this.surname = surname;
         setName();
     }
 
-    public String getSurname() {
+  /**
+   * Gets surname.
+   *
+   * @return the surname
+   */
+  public String getSurname() {
         return surname;
     }
 
-    public void setName() {
+  /** Sets name. */
+  public void setName() {
         if (firstName != null && surname != null) {
             setName(firstName + " " + surname);
         } else if (firstName == null && surname != null) {
@@ -31,15 +51,30 @@ class IndividualRecord extends Record {
         } else setName(Objects.requireNonNullElse(firstName, "[no name]"));
     }
 
-    public void setFirstName(String firstName) {
+  /**
+   * Sets first name.
+   *
+   * @param firstName the first name
+   */
+  public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getFirstName() {
+  /**
+   * Gets first name.
+   *
+   * @return the first name
+   */
+  public String getFirstName() {
         return firstName;
     }
 
-    public void setGender(String gender) {
+  /**
+   * Sets gender.
+   *
+   * @param gender the gender
+   */
+  public void setGender(String gender) {
         updateEditTime();
         try {
             if (isValidGender(gender)) {
@@ -53,15 +88,31 @@ class IndividualRecord extends Record {
         }
     }
 
-    private boolean isValidGender(String gender) {
+  /**
+   * Is valid gender boolean.
+   *
+   * @param gender the gender
+   * @return the boolean
+   */
+  private boolean isValidGender(String gender) {
         return gender.matches("[MF]");
     }
 
-    public String getGender() {
+  /**
+   * Gets gender.
+   *
+   * @return the gender
+   */
+  public String getGender() {
         return gender;
     }
 
-    public void setBirthDate(String birthDate) {
+  /**
+   * Sets birth date.
+   *
+   * @param birthDate the birth date
+   */
+  public void setBirthDate(String birthDate) {
         updateEditTime();
         try {
             if (!birthDate.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
@@ -75,11 +126,21 @@ class IndividualRecord extends Record {
 
     }
 
-    private LocalDate getBirthDate() {
+  /**
+   * Gets birth date.
+   *
+   * @return the birth date
+   */
+  private LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public String getBirthDateString() {
+  /**
+   * Gets birth date string.
+   *
+   * @return the birth date string
+   */
+  public String getBirthDateString() {
         if (this.getBirthDate() != null) {
             return this.getBirthDate().toString();
         } else {
