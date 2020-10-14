@@ -61,7 +61,7 @@ abstract class Record {
   }
 
   /**
-   * Is valid phone number boolean.
+   * Checks if the phone number provided is a valid format
    *
    * @param phoneNumber the phone number
    * @return the boolean
@@ -148,26 +148,16 @@ abstract class Record {
   public abstract String[] getFields();
 }
 
-/** The enum Fields. */
 enum Fields {
-  /** Number fields. */
   NUMBER("number"),
-  /** Name fields. */
   NAME("name"),
-  /** Surname fields. */
   SURNAME("surname"),
-  /** Gender fields. */
   GENDER("gender"),
-  /** Birth fields. */
   BIRTH("birth"),
-  /** Address fields. */
   ADDRESS("address"),
-  /** Creation fields. */
   CREATION("creationDateTime"),
-  /** Edit fields. */
   EDIT("editDateTime");
 
-  /** The Label. */
   String label;
 
   /**
