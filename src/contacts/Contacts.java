@@ -3,23 +3,33 @@ package contacts;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/** The type Contacts. */
+/**
+ * The type Contacts.
+ */
 class Contacts {
-  /** The Records. */
-  private final ArrayList<Record> RECORDS = new ArrayList<>();
+    /**
+     * The Records.
+     */
+    private final ArrayList<Record> RECORDS = new ArrayList<>();
 
-  /** The Scanner. */
-  private Scanner scanner;
+    /**
+     * The Scanner.
+     */
+    private Scanner scanner;
 
-  /** Start. */
-  public static void start() {
+    /**
+     * Start.
+     */
+    public static void start() {
         Contacts contacts = new Contacts();
         contacts.scanner = new Scanner(System.in);
         contacts.mainMenu();
     }
 
-  /** Main menu. */
-  private void mainMenu() {
+    /**
+     * Main menu.
+     */
+    private void mainMenu() {
         System.out.print("[menu] Enter action (add, list, search, count, exit): ");
         switch (scanner.nextLine()) {
             case "add":
@@ -45,8 +55,10 @@ class Contacts {
         mainMenu();
     }
 
-  /** Add record. */
-  private void addRecord() {
+    /**
+     * Add record.
+     */
+    private void addRecord() {
         System.out.print("Enter the type (person, organization): ");
         Record newRecord = null;
         switch (scanner.nextLine()) {
@@ -66,12 +78,12 @@ class Contacts {
         addRecordDetails(newRecord);
     }
 
-  /**
-   * Add record details.
-   *
-   * @param newRecord the new record
-   */
-  private void addRecordDetails(Record newRecord) {
+    /**
+     * Add record details.
+     *
+     * @param newRecord the new record
+     */
+    private void addRecordDetails(Record newRecord) {
         for (String field : newRecord.getFields()) {
             System.out.print("Enter the " + field + ": ");
             newRecord.setField(field, scanner.nextLine());
@@ -81,8 +93,10 @@ class Contacts {
         mainMenu();
     }
 
-  /** List menu. */
-  private void listMenu() {
+    /**
+     * List menu.
+     */
+    private void listMenu() {
         System.out.println(recordsList(RECORDS) + "\n");
         if (RECORDS.isEmpty()) {
             mainMenu();
@@ -102,13 +116,13 @@ class Contacts {
         }
     }
 
-  /**
-   * Records list string.
-   *
-   * @param records the records
-   * @return the string
-   */
-  private String recordsList(ArrayList<Record> records) {
+    /**
+     * Records list string.
+     *
+     * @param records the records
+     * @return the string
+     */
+    private String recordsList(ArrayList<Record> records) {
         if (RECORDS.isEmpty()) {
             return "This Phone Book contains no records.";
         }
@@ -125,12 +139,12 @@ class Contacts {
         return sb.toString();
     }
 
-  /**
-   * Record menu.
-   *
-   * @param curRecord the cur record
-   */
-  private void recordMenu(Record curRecord) {
+    /**
+     * Record menu.
+     *
+     * @param curRecord the cur record
+     */
+    private void recordMenu(Record curRecord) {
         System.out.print("[record] Enter action (edit, delete, menu): ");
         switch (scanner.nextLine()) {
             case "edit":
@@ -151,12 +165,12 @@ class Contacts {
         }
     }
 
-  /**
-   * Edit menu.
-   *
-   * @param curRecord the cur record
-   */
-  private void editMenu(Record curRecord) {
+    /**
+     * Edit menu.
+     *
+     * @param curRecord the cur record
+     */
+    private void editMenu(Record curRecord) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Select a field (");
         String[] fields = curRecord.getFields();
@@ -179,8 +193,10 @@ class Contacts {
         System.out.println("Record successfully updated!\n");
     }
 
-  /** Search menu. */
-  private void searchMenu() {
+    /**
+     * Search menu.
+     */
+    private void searchMenu() {
         System.out.print("Enter search query: ");
         String searchQuery = scanner.nextLine().toLowerCase();
         ArrayList<Record> matches = new ArrayList<>();
@@ -223,13 +239,13 @@ class Contacts {
         }
     }
 
-  /**
-   * Is numeric boolean.
-   *
-   * @param strNum the str num
-   * @return the boolean
-   */
-  private static boolean isNumeric(String strNum) {
+    /**
+     * Is numeric boolean.
+     *
+     * @param strNum the str num
+     * @return the boolean
+     */
+    private static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }
@@ -241,8 +257,10 @@ class Contacts {
         return true;
     }
 
-  /** Exit program. */
-  private void exitProgram() {
+    /**
+     * Exit program.
+     */
+    private void exitProgram() {
         System.exit(100);
     }
 
